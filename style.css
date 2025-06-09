@@ -1,0 +1,10 @@
+.stratagems-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stratagem-type-container {
+    flex: 1 1 300px;
+    margin: 10px;
+}
