@@ -22,7 +22,7 @@ function checkWhichAStoIncrease(squareColour, colour) {
     } else if (squareColour !== colour) {
         if (squareColour === "blue") {
             availableBlueStratagems += 1;
-            console.log("hi")
+            // console.log("hi")
         } else if (squareColour === "red") {
             availableRedStratagems += 1;
         } else if (squareColour === "green") {
@@ -34,6 +34,7 @@ function checkWhichAStoIncrease(squareColour, colour) {
     }
 }
 function sendToRandomLoudout() {
+    let doAlert = false;
     const bigSquares = [
         document.getElementById("sg1"),
         document.getElementById("sg2"),
@@ -42,15 +43,22 @@ function sendToRandomLoudout() {
     ]
     bigSquares.forEach(bigSquare => {
         if (bigSquare.style.backgroundColor === "white") {
-            alert("You must choose a stratagem type for all the stratagem slots!");
-            return
+            // console.log(bigSquare);
+            doAlert = true;
         }
     })
-    localStorage.setItem("sg1", (document.getElementById("sg1").style.backgroundColor).colourSimplify());
-    localStorage.setItem("sg2", (document.getElementById("sg2").style.backgroundColor).colourSimplify());
-    localStorage.setItem("sg3", (document.getElementById("sg3").style.backgroundColor).colourSimplify());
-    localStorage.setItem("sg4", (document.getElementById("sg4").style.backgroundColor).colourSimplify()); 
-    window.location.href = "random-loudout.html";
+    if (doAlert === true) {
+        alert("You must choose a stratagem type for all the stratagem slots!");
+        return
+    }
+    else if (doAlert === false) {
+        localStorage.setItem("sg1", colourSimplify(document.getElementById("sg1").style.backgroundColor));
+        localStorage.setItem("sg2", colourSimplify(document.getElementById("sg2").style.backgroundColor));
+        localStorage.setItem("sg3", colourSimplify(document.getElementById("sg3").style.backgroundColor));
+        localStorage.setItem("sg4", colourSimplify(document.getElementById("sg4").style.backgroundColor));
+        window.location.href = "random-loudout.html";
+    }
+
 }
 
 function updateBigSquareColour(squareId, colour) {
