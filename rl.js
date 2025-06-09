@@ -1,0 +1,280 @@
+const sg1 = localStorage.getItem("sg1")
+const sg2 = localStorage.getItem("sg2")
+const sg3 = localStorage.getItem("sg3")
+const sg4 = localStorage.getItem("sg4")
+
+const selectedStratagemPattern = [sg1, sg2, sg3, sg4];
+
+const selectedStratagems = localStorage.getItem("selectedStratagems");
+
+const sg1Div = document.getElementById("sg1");
+const sg2Div = document.getElementById("sg2");
+const sg3Div = document.getElementById("sg3");
+const sg4Div = document.getElementById("sg4");
+
+const sgDivs = [sg1Div, sg2Div, sg3Div, sg4Div];
+
+function colourSimplify(colour) {
+    if (colour === "rgb(34, 136, 167)") {
+        return "blue";
+    } else if (colour === "rgb(182, 46, 34)") {
+        return "red";
+    } else if (colour === "rgb(50, 96, 33)") {
+        return "green";
+    }
+}
+
+const blueStratagemsPerm = [
+  "MG-43 Machine Gun",
+  "APW-1 Anti-Materiel Rifle",
+  "M-105 Stalwart",
+  "EAT-17 Expendable Anti-Tank",
+  "GR-8 Recoilless Rifle",
+  "FLAM-40 Flamethrower",
+  "AC-8 Autocannon",
+  "MG-206 Heavy Machine Gun",
+  "RL-77 Airburst Rocket Launcher",
+  "MLS-4X Commando",
+  "RS-422 Railgun",
+  "FAF-14 spear",
+  "StA-X3 W.A.S.P. Launcher",
+  "LIFT-850 Jump Pack",
+  "M-102 Fast Recon Vehicle",
+  "B-1 Supply Pack",
+  "GL-21 Grenade Launcher",
+  "LAS-98 Laser Cannon",
+  `AX/LAS-5 "Guard Dog" Rover`,
+  "SH-20 Ballistic Shield Backpack",
+  "ARC-3 Arc Thrower",
+  "LAS-99 Quasar Cannon",
+  "SH-32 Shield Generator Pack",
+  `AX/AR-23 "Guard Dog"`,
+  "EXO-45 Patriot Exosuit",
+  "EXO-49 Emancipator Exosuit",
+  "TX-41 Sterilizer",
+  `AX/TX-13 "Guard Dog" Dog Breath`,
+  "SH-51 Directional Shield",
+  "B-100 Portable Hellbomb",
+  "LIFT-860 Hover Pack",
+  "CQC-1 One True Flag"
+];
+const redStratagemsPerm = [
+  "Orbital Gatling Barrage",
+  "Orbital Airburst Strike",
+  "Orbital 120mm HE Barrage",
+  "Orbital 380mm HE Barrage",
+  "Orbital Walking Barrage",
+  "Orbital Laser",
+  "Orbital Napalm Barrage",
+  "Orbital Railcannon Strike",
+  "Eagle Strafing Run",
+  "Eagle Airstrike",
+  "Eagle Cluster Bomb",
+  "Eagle Napalm Airstrike",
+  "Eagle Smoke Strike",
+  "Eagle 110mm Rocket Pods",
+  "Eagle 500kg Bomb",
+  "Orbital Precision Strike",
+  "Orbital Gas Strike",
+  "Orbital EMS Strike",
+  "Orbital Smoke Strike"
+];
+const greenStratagemsPerm = [
+  "E/MG-101 HMG Emplacement",
+  "FX-12 Shield Generator Relay",
+  "A/ARC-3 Tesla Tower",
+  "E/GL-21 Grenadier Battlement",
+  "MD-6 Anti-Personnel Minefield",
+  "MD-I4 Incendiary Mines",
+  "MD-17 Anti-Tank Mines",
+  "MD-8 Gas Mines",
+  "A/MG-43 Machine Gun Sentry",
+  "A/G-16 Gatling Sentry",
+  "A/M-12 Mortar Sentry",
+  "A/AC-8 Autocannon Sentry",
+  "A/MLS-4X Rocket Sentry",
+  "A/M-23 EMS Mortar Sentry",
+  "E/AT-12 Anti-Tank Emplacement",
+  "A/FLAM-40 Flame Sentry"
+];
+
+
+
+
+let blueStratagems = [
+    "MG-43 Machine Gun",
+    "APW-1 Anti-Materiel Rifle",
+    "M-105 Stalwart",
+    "EAT-17 Expendable Anti-Tank",
+    "GR-8 Recoilless Rifle",
+    "FLAM-40 Flamethrower",
+    "AC-8 Autocannon",
+    "MG-206 Heavy Machine Gun",
+    "RL-77 Airburst Rocket Launcher",
+    "MLS-4X Commando",
+    "RS-422 Railgun",
+    "FAF-14 spear",
+    "StA-X3 W.A.S.P. Launcher",
+    "LIFT-850 Jump Pack",
+    "M-102 Fast Recon Vehicle",
+    "B-1 Supply Pack",
+    "GL-21 Grenade Launcher",
+    "LAS-98 Laser Cannon",
+    `AX/LAS-5 "Guard Dog" Rover`,
+    "SH-20 Ballistic Shield Backpack",
+    "ARC-3 Arc Thrower",
+    "LAS-99 Quasar Cannon",
+    "SH-32 Shield Generator Pack",
+    `AX/AR-23 "Guard Dog"`,
+    "EXO-45 Patriot Exosuit",
+    "EXO-49 Emancipator Exosuit",
+    "TX-41 Sterilizer",
+    `AX/TX-13 "Guard Dog" Dog Breath`,
+    "SH-51 Directional Shield",
+    "B-100 Portable Hellbomb",
+    "LIFT-860 Hover Pack",
+    "CQC-1 One True Flag"
+];
+let redStratagems = [
+    "Orbital Gatling Barrage",
+    "Orbital Airburst Strike",
+    "Orbital 120mm HE Barrage",
+    "Orbital 380mm HE Barrage",
+    "Orbital Walking Barrage",
+    "Orbital Laser",
+    "Orbital Napalm Barrage",
+    "Orbital Railcannon Strike",
+    "Eagle Strafing Run",
+    "Eagle Airstrike",
+    "Eagle Cluster Bomb",
+    "Eagle Napalm Airstrike",
+    "Eagle Smoke Strike",
+    "Eagle 110mm Rocket Pods",
+    "Eagle 500kg Bomb",
+    "Orbital Precision Strike",
+    "Orbital Gas Strike",
+    "Orbital EMS Strike",
+    "Orbital Smoke Strike"
+];
+let greenStratagems = [
+    "E/MG-101 HMG Emplacement",
+    "FX-12 Shield Generator Relay",
+    "A/ARC-3 Tesla Tower",
+    "E/GL-21 Grenadier Battlement",
+    "MD-6 Anti-Personnel Minefield",
+    "MD-I4 Incendiary Mines",
+    "MD-17 Anti-Tank Mines",
+    "MD-8 Gas Mines",
+    "A/MG-43 Machine Gun Sentry",
+    "A/G-16 Gatling Sentry",
+    "A/M-12 Mortar Sentry",
+    "A/AC-8 Autocannon Sentry",
+    "A/MLS-4X Rocket Sentry",
+    "A/M-23 EMS Mortar Sentry",
+    "E/AT-12 Anti-Tank Emplacement",
+    "A/FLAM-40 Flame Sentry"
+];
+
+blueStratagems = blueStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+redStratagems = redStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+greenStratagems = greenStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+
+function findImageFilename(stratagem) {
+    const lowercaseStratagem = stratagem.toLowerCase();
+    // console.log(lowercaseStratagem);
+    const replacedSpace = lowercaseStratagem.replace(/\s+/g, "-");
+    const replacedSlash = replacedSpace.replace(/\//g, "-");
+    const replacedQuote = replacedSlash.replace(/\"/g, "'");
+
+    // console.log(replacedSpace);
+    return `./images/${replacedQuote}.webp`;
+}
+
+// sgDivs.forEach((div, index) => {
+//     if (selectedStratagemPattern[index] === "blue") {
+//         div.style.backgroundColor = "rgb(34, 136, 167)"
+//     } else if (selectedStratagemPattern[index] === "red") {
+//         div.style.backgroundColor = "rgb(182, 46, 34)"
+//     } else if (selectedStratagemPattern[index] === "green") {
+//         div.style.backgroundColor = "rgb(50, 96, 33)"
+//     }
+// })
+function returnSG(stratagem) {
+    // console.log(stratagem.id);
+    let SGcolour = "";
+    if (blueStratagemsPerm.includes(stratagem.id)) {
+        SGcolour = "blue";
+    } else if (redStratagemsPerm.includes(stratagem.id)) {
+        SGcolour = "red";
+    } else if (greenStratagemsPerm.includes(stratagem.id)) {
+        SGcolour = "green";
+    }
+    if (SGcolour === "") {
+        return;
+    }
+
+    if (SGcolour === "blue") {
+        blueStratagems.push(stratagem.id);
+    } else if (SGcolour === "red") {
+        redStratagems.push(stratagem.id);
+    } else if (SGcolour === "green") {
+        greenStratagems.push(stratagem.id);
+    }
+}
+
+
+function getRandom(div, index) {
+    // console.log(div);
+    if (selectedStratagemPattern[index] === "blue") {
+        const selectedRandomSG = blueStratagems[Math.floor(Math.random() * blueStratagems.length)];
+
+        const img = new Image();
+        img.src = findImageFilename(selectedRandomSG);
+        img.style.width = "50px";
+        img.style.height = "50px";
+        img.id = selectedRandomSG;
+
+        div.appendChild(img);
+        const text = document.createElement("p");
+        text.textContent = selectedRandomSG;
+        div.appendChild(text);
+
+        blueStratagems.splice(blueStratagems.indexOf(selectedRandomSG), 1);
+    } else if (selectedStratagemPattern[index] === "red") {
+        const selectedRandomSG = redStratagems[Math.floor(Math.random() * redStratagems.length)];
+
+        const img = new Image();
+        img.src = findImageFilename(selectedRandomSG);
+        img.style.width = "50px";
+        img.style.height = "50px";
+        img.id = selectedRandomSG;
+
+
+        div.appendChild(img);
+        const text = document.createElement("p");
+        text.textContent = selectedRandomSG;
+        div.appendChild(text);
+
+        redStratagems.splice(redStratagems.indexOf(selectedRandomSG), 1);
+    } else if (selectedStratagemPattern[index] === "green") {
+        const selectedRandomSG = greenStratagems[Math.floor(Math.random() * greenStratagems.length)];
+
+        const img = new Image();
+        img.src = findImageFilename(selectedRandomSG);
+        img.style.width = "50px";
+        img.style.height = "50px";
+        img.id = selectedRandomSG;
+
+        div.appendChild(img);
+        const text = document.createElement("p");
+        text.textContent = selectedRandomSG;
+        div.appendChild(text);
+
+        greenStratagems.splice(greenStratagems.indexOf(selectedRandomSG), 1);
+    }
+}
+
+
+sgDivs.forEach((div, index) => {
+    getRandom(div, index);
+})
