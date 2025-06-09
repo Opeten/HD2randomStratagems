@@ -72,6 +72,33 @@ const greenStratagems = [
   "A/FLAM-40 Flame Sentry"
 ];
 let selectedStratagems = [];
+let selectedBlueStratagems = 0;
+let selectedRedStratagems = 0;
+let selectedGreenStratagems = 0;
+function sendToChooseLoudoutColours() {
+  if (selectedStratagems.length > 0) {
+    localStorage.setItem("selectedStratagems", JSON.stringify(selectedStratagems));
+  }
+  if (selectedStratagems.length < 4) {
+    alert("You need to select at least 4 stratagems!");
+    return;
+  }
+  selectedStratagems.forEach((stratagem) => {
+    if(blueStratagems.includes(stratagem)) {
+      selectedBlueStratagems += 1;
+    }
+    if(redStratagems.includes(stratagem)) {
+      selectedRedStratagems += 1;
+    }
+    if(greenStratagems.includes(stratagem)) {
+      selectedGreenStratagems += 1;
+    }
+  })
+  localStorage.setItem("selectedBlueStratagems", selectedBlueStratagems);
+  localStorage.setItem("selectedRedStratagems", selectedRedStratagems);
+  localStorage.setItem("selectedGreenStratagems", selectedGreenStratagems);
+  window.location.href = "choose-loudout-colours.html";
+}
 
 function findImageFilename(stratagem) {
   const lowercaseStratagem = stratagem.toLowerCase();

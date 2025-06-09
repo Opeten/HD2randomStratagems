@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helldivers 2 Stratagem Picker</title>
+    <script src="clc.js"></script>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onclick="window.location.href = 'index.html';">Choose Stratagems</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onclick="sendToRandomLoudout()">Get Randomized Loudout</button>
+    <h1>Choose Stratagem Loudout Colours</h1>
+</head>
+
+<body>
+
+    <style>
+        :root {
+            --smallSquareSize: 20px;
+        }
+
+        .big-square {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border: 1px solid black;
+        }
+
+        .small-squares {
+            position: absolute;
+            top: 120px;
+            left: 0;
+            width: 100px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .small-square {
+            width: var(--smallSquareSize);
+            height: var(--smallSquareSize);
+            background-color: rgb(182, 46, 34);
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="big-square" id="sg1" style="left: 30%;">
+        <div class="small-squares">
+            <div class="small-square" style="background-color: rgb(50,96,33); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg1', 'green');" title="Defensive Stratagems"></div>
+            <div class="small-square" style="background-color: rgb(34,136,167); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg1', 'blue');" title="Support Stratagems"></div>
+            <div class="small-square" style="background-color: rgb(182,46,34); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg1', 'red');" title="Offensive Stratagems"></div>
+        </div>
+    </div>
+
+    <div class="big-square" id="sg2" style="left: 40%;">
+        <div class="small-squares">
+            <div class="small-square" style="background-color: rgb(50,96,33); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg2', 'green');" title="Defensive Stratagems"></div>
+            <div class="small-square" style="background-color: rgb(34,136,167); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg2', 'blue');" title="Support Stratagems"></div>
+            <div class="small-square" style="background-color: rgb(182,46,34); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg2', 'red');" title="Offensive Stratagems"></div>
+        </div>
+    </div>
+
+    <div class="big-square" id="sg3" style="left: 50%;">
+        <div class="small-squares">
+            <div class="small-square" style="background-color: rgb(50,96,33); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg3', 'green');" title="Defensive Stratagems"></div>
+            <div class="small-square" style="background-color: rgb(34,136,167); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg3', 'blue');" title="Support Stratagems"></div>
+            <div class="small-square" style="background-color: rgb(182,46,34); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg3', 'red');" title="Offensive Stratagems"></div>
+        </div>
+    </div>
+
+    <div class="big-square" id="sg4" style="left: 60%;">
+        <div class="small-squares">
+            <div class="small-square" style="background-color: rgb(50,96,33); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg4', 'green');" title="Defensive Stratagems"></div>
+            <div class="small-square" style="background-color: rgb(34,136,167); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg4', 'blue');" title="Support Stratagems"></div>
+            <div class="small-square" style="background-color: rgb(182,46,34); border: 1px solid black;"
+                onclick="updateBigSquareColour('sg4', 'red');" title="Offensive Stratagems"></div>
+        </div>
+    </div>
+</body>
