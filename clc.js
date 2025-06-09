@@ -4,8 +4,26 @@ let availableGreenStratagems = localStorage.getItem("selectedGreenStratagems");
 
 let trueColour = "";
 
-
-
+const sgOrder = localStorage.getItem("sgOrder");
+document.addEventListener("DOMContentLoaded", () => {
+    if (sgOrder) {
+        const sgOrderArray = JSON.parse(sgOrder);
+        // console.log(sgOrderArray);
+        sgOrderArray.forEach((sgSlot, index) => {
+            // console.log(square);
+            updateBigSquareColour(`sg${index + 1}`, sgSlot);
+        })
+    }
+})
+// function colourDeSimplify(colour) {
+//     if (colour === "blue") {
+//         return "rgb(34, 136, 167)";
+//     } else if (colour === "red") {
+//         return "rgb(182, 46, 34)";
+//     } else if (colour === "green") {
+//         return "rgb(50, 96, 33)";
+//     }
+// }
 function colourSimplify(colour) {
     if (colour === "rgb(34, 136, 167)") {
         return "blue";
@@ -52,10 +70,12 @@ function sendToRandomLoudout() {
         return
     }
     else if (doAlert === false) {
-        localStorage.setItem("sg1", colourSimplify(document.getElementById("sg1").style.backgroundColor));
-        localStorage.setItem("sg2", colourSimplify(document.getElementById("sg2").style.backgroundColor));
-        localStorage.setItem("sg3", colourSimplify(document.getElementById("sg3").style.backgroundColor));
-        localStorage.setItem("sg4", colourSimplify(document.getElementById("sg4").style.backgroundColor));
+        const returnOrder = [colourSimplify(document.getElementById("sg1").style.backgroundColor), colourSimplify(document.getElementById("sg2").style.backgroundColor), colourSimplify(document.getElementById("sg3").style.backgroundColor), colourSimplify(document.getElementById("sg4").style.backgroundColor)];
+        // localStorage.setItem("sg1", colourSimplify(document.getElementById("sg1").style.backgroundColor));
+        // localStorage.setItem("sg2", colourSimplify(document.getElementById("sg2").style.backgroundColor));
+        // localStorage.setItem("sg3", colourSimplify(document.getElementById("sg3").style.backgroundColor));
+        // localStorage.setItem("sg4", colourSimplify(document.getElementById("sg4").style.backgroundColor));
+        localStorage.setItem("sgOrder", JSON.stringify(returnOrder));
         window.location.href = "random-loudout.html";
     }
 

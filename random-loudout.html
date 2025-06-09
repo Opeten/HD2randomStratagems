@@ -27,23 +27,40 @@
         onclick="window.location.href = 'choose-loudout-colours.html';">Choose Stratagem Types Loudout</button>
 
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="
+        blueStratagems = blueStratagemsPerm;
+        redStratagems = redStratagemsPerm;
+        greenStratagems = greenStratagemsPerm;
+        blueStratagems = blueStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        redStratagems = redStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        greenStratagems = greenStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        
         sgDivs.forEach(div => {
             while (div.firstChild) {
-                returnSG(div.firstChild);
+                // returnSG(div.firstChild);
                 div.removeChild(div.firstChild);
             }
         })
+        blueStratagems = blueStratagemsPerm;
+        redStratagems = redStratagemsPerm;
+        greenStratagems = greenStratagemsPerm;
+        blueStratagems = blueStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        redStratagems = redStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        greenStratagems = greenStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
         sgDivs.forEach((div, index) => {
             getRandom(div, index);
         })
-    ">Get Randomized Loudout</button>   
+    ">Get Randomized Loudout</button>
+
+    <input type="checkbox" id="Only1Backpack" name="Only1Backpack" value="Only1Backpack">Only 1 Backpack
+    Stratagem?</input>
+
 </head>
 
 <body>
     <div class=" big-square" id="sg1" style="left: 40%;"></div>
-        <div class="big-square" id="sg2" style="left: 60%;"></div>
-        <div class="big-square" id="sg3" style="left: 80%;"></div>
-        <div class="big-square" id="sg4" style="left: 100%;"></div>
-        </body>
+    <div class="big-square" id="sg2" style="left: 60%;"></div>
+    <div class="big-square" id="sg3" style="left: 80%;"></div>
+    <div class="big-square" id="sg4" style="left: 100%;"></div>
+</body>
 
 </html>
