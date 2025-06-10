@@ -33,19 +33,21 @@
         blueStratagems = blueStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
         redStratagems = redStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
         greenStratagems = greenStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        oneBackpackSGUsed = false;
         
         sgDivs.forEach(div => {
             while (div.firstChild) {
                 // returnSG(div.firstChild);
                 div.removeChild(div.firstChild);
+                // console.log(div.firstChild);
             }
         })
-        blueStratagems = blueStratagemsPerm;
-        redStratagems = redStratagemsPerm;
-        greenStratagems = greenStratagemsPerm;
-        blueStratagems = blueStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
-        redStratagems = redStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
-        greenStratagems = greenStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        // blueStratagems = blueStratagemsPerm;
+        // redStratagems = redStratagemsPerm;
+        // greenStratagems = greenStratagemsPerm;
+        // blueStratagems = blueStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        // redStratagems = redStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
+        // greenStratagems = greenStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
         sgDivs.forEach((div, index) => {
             getRandom(div, index);
         })

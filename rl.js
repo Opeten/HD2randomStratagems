@@ -126,79 +126,9 @@ const greenStratagemsPerm = [
 
 
 
-let blueStratagems = [
-    "MG-43 Machine Gun",
-    "APW-1 Anti-Materiel Rifle",
-    "M-105 Stalwart",
-    "EAT-17 Expendable Anti-Tank",
-    "GR-8 Recoilless Rifle",
-    "FLAM-40 Flamethrower",
-    "AC-8 Autocannon",
-    "MG-206 Heavy Machine Gun",
-    "RL-77 Airburst Rocket Launcher",
-    "MLS-4X Commando",
-    "RS-422 Railgun",
-    "FAF-14 spear",
-    "StA-X3 W.A.S.P. Launcher",
-    "LIFT-850 Jump Pack",
-    "M-102 Fast Recon Vehicle",
-    "B-1 Supply Pack",
-    "GL-21 Grenade Launcher",
-    "LAS-98 Laser Cannon",
-    `AX/LAS-5 "Guard Dog" Rover`,
-    "SH-20 Ballistic Shield Backpack",
-    "ARC-3 Arc Thrower",
-    "LAS-99 Quasar Cannon",
-    "SH-32 Shield Generator Pack",
-    `AX/AR-23 "Guard Dog"`,
-    "EXO-45 Patriot Exosuit",
-    "EXO-49 Emancipator Exosuit",
-    "TX-41 Sterilizer",
-    `AX/TX-13 "Guard Dog" Dog Breath`,
-    "SH-51 Directional Shield",
-    "B-100 Portable Hellbomb",
-    "LIFT-860 Hover Pack",
-    "CQC-1 One True Flag"
-];
-let redStratagems = [
-    "Orbital Gatling Barrage",
-    "Orbital Airburst Strike",
-    "Orbital 120mm HE Barrage",
-    "Orbital 380mm HE Barrage",
-    "Orbital Walking Barrage",
-    "Orbital Laser",
-    "Orbital Napalm Barrage",
-    "Orbital Railcannon Strike",
-    "Eagle Strafing Run",
-    "Eagle Airstrike",
-    "Eagle Cluster Bomb",
-    "Eagle Napalm Airstrike",
-    "Eagle Smoke Strike",
-    "Eagle 110mm Rocket Pods",
-    "Eagle 500kg Bomb",
-    "Orbital Precision Strike",
-    "Orbital Gas Strike",
-    "Orbital EMS Strike",
-    "Orbital Smoke Strike"
-];
-let greenStratagems = [
-    "E/MG-101 HMG Emplacement",
-    "FX-12 Shield Generator Relay",
-    "A/ARC-3 Tesla Tower",
-    "E/GL-21 Grenadier Battlement",
-    "MD-6 Anti-Personnel Minefield",
-    "MD-I4 Incendiary Mines",
-    "MD-17 Anti-Tank Mines",
-    "MD-8 Gas Mines",
-    "A/MG-43 Machine Gun Sentry",
-    "A/G-16 Gatling Sentry",
-    "A/M-12 Mortar Sentry",
-    "A/AC-8 Autocannon Sentry",
-    "A/MLS-4X Rocket Sentry",
-    "A/M-23 EMS Mortar Sentry",
-    "E/AT-12 Anti-Tank Emplacement",
-    "A/FLAM-40 Flame Sentry"
-];
+let blueStratagems = blueStratagemsPerm;
+let redStratagems = redStratagemsPerm;
+let greenStratagems = greenStratagemsPerm;
 
 blueStratagems = blueStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
 redStratagems = redStratagems.filter(stratagem => selectedStratagems.includes(stratagem));
@@ -280,15 +210,18 @@ function getRandom(div, index) {
                 // console.log("backpack stratagem");
                 if (!oneBackpackSGUsed) {
                     // backPackStratagems.forEach(stratagem => {
-                    //     // console.log(stratagem);
+                    // console.log(selectedRandomSG);
                     //     blueStratagems.splice(stratagem, 1);
                     // })
                     blueStratagems = blueStratagems.filter(stratagem => !backPackStratagems.includes(stratagem));
+                    // console.log(blueStratagems);
+
                 }
                 oneBackpackSGUsed = true;
+
             }
         }
-
+        // console.log(oneBackpackSGUsed);
         const img = new Image();
         img.src = findImageFilename(selectedRandomSG);
         img.style.width = "50px";

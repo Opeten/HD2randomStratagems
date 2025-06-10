@@ -15,15 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 })
-// function colourDeSimplify(colour) {
-//     if (colour === "blue") {
-//         return "rgb(34, 136, 167)";
-//     } else if (colour === "red") {
-//         return "rgb(182, 46, 34)";
-//     } else if (colour === "green") {
-//         return "rgb(50, 96, 33)";
-//     }
-// }
+function colourDeSimplify(colour) {
+    if (colour === "blue") {
+        return "rgb(34, 136, 167)";
+    } else if (colour === "red") {
+        return "rgb(182, 46, 34)";
+    } else if (colour === "green") {
+        return "rgb(50, 96, 33)";
+    }
+}
 function colourSimplify(colour) {
     if (colour === "rgb(34, 136, 167)") {
         return "blue";
@@ -83,6 +83,9 @@ function sendToRandomLoudout() {
 
 function updateBigSquareColour(squareId, colour) {
     const currentColour = document.getElementById(squareId).style.backgroundColor;
+    if(currentColour === colourDeSimplify(colour)){
+        return
+    }
     if (colour === "blue") {
         trueColour = "rgb(34, 136, 167)";
         if (availableBlueStratagems === 0) {
