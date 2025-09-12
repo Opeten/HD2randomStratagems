@@ -1,4 +1,4 @@
-const blueStratagemsPerm = [
+const blueStratagems = [
   "MG-43 Machine Gun",
   "APW-1 Anti-Materiel Rifle",
   "M-105 Stalwart",
@@ -39,7 +39,7 @@ const blueStratagemsPerm = [
   "EAT-700 Expendable Napalm",
   "MS-11 Solo Silo"
 ];
-const redStratagemsPerm = [
+const redStratagems = [
   "Orbital Gatling Barrage",
   "Orbital Airburst Strike",
   "Orbital 120mm HE Barrage",
@@ -60,7 +60,7 @@ const redStratagemsPerm = [
   "Orbital EMS Strike",
   "Orbital Smoke Strike"
 ];
-const greenStratagemsPerm = [
+const greenStratagems = [
   "E/MG-101 HMG Emplacement",
   "FX-12 Shield Generator Relay",
   "A/ARC-3 Tesla Tower",
