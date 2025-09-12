@@ -46,6 +46,8 @@ const backPackStratagems = [
     "SH-20 Ballistic Shield Backpack",
     "SH-32 Shield Generator Pack",
     "SH-51 Directional Shield",
+    `AX/ARC-3 "Guard Dog" K-9`,
+    "LIFT-182 Warp Pack"
 ];
 
 
@@ -81,7 +83,14 @@ const blueStratagemsPerm = [
     "SH-51 Directional Shield",
     "B-100 Portable Hellbomb",
     "LIFT-860 Hover Pack",
-    "CQC-1 One True Flag"
+    "CQC-1 One True Flag",
+    "GL-52 De-Escalator",
+    `AX/ARC-3 "Guard Dog" K-9`,
+    "PLAS-45 Epoch",
+    "LIFT-182 Warp Pack",
+    "S-11 Speargun",
+    "EAT-700 Expendable Napalm",
+    "MS-11 Solo Silo"
 ];
 const redStratagemsPerm = [
     "Orbital Gatling Barrage",
@@ -120,7 +129,8 @@ const greenStratagemsPerm = [
     "A/MLS-4X Rocket Sentry",
     "A/M-23 EMS Mortar Sentry",
     "E/AT-12 Anti-Tank Emplacement",
-    "A/FLAM-40 Flame Sentry"
+    "A/FLAM-40 Flame Sentry",
+    "A/LAS-98 Laser Sentry"
 ];
 
 

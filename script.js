@@ -1,4 +1,4 @@
-const blueStratagems = [
+const blueStratagemsPerm = [
   "MG-43 Machine Gun",
   "APW-1 Anti-Materiel Rifle",
   "M-105 Stalwart",
@@ -30,9 +30,16 @@ const blueStratagems = [
   "SH-51 Directional Shield",
   "B-100 Portable Hellbomb",
   "LIFT-860 Hover Pack",
-  "CQC-1 One True Flag"
+  "CQC-1 One True Flag",
+  "GL-52 De-Escalator",
+  `AX/ARC-3 "Guard Dog" K-9`,
+  "PLAS-45 Epoch",
+  "LIFT-182 Warp Pack",
+  "S-11 Speargun",
+  "EAT-700 Expendable Napalm",
+  "MS-11 Solo Silo"
 ];
-const redStratagems = [
+const redStratagemsPerm = [
   "Orbital Gatling Barrage",
   "Orbital Airburst Strike",
   "Orbital 120mm HE Barrage",
@@ -53,7 +60,7 @@ const redStratagems = [
   "Orbital EMS Strike",
   "Orbital Smoke Strike"
 ];
-const greenStratagems = [
+const greenStratagemsPerm = [
   "E/MG-101 HMG Emplacement",
   "FX-12 Shield Generator Relay",
   "A/ARC-3 Tesla Tower",
@@ -69,7 +76,8 @@ const greenStratagems = [
   "A/MLS-4X Rocket Sentry",
   "A/M-23 EMS Mortar Sentry",
   "E/AT-12 Anti-Tank Emplacement",
-  "A/FLAM-40 Flame Sentry"
+  "A/FLAM-40 Flame Sentry",
+  "A/LAS-98 Laser Sentry"
 ];
 let selectedStratagems = [];
 let selectedBlueStratagems = 0;
