@@ -79,26 +79,120 @@ const greenStratagems = [
   "A/FLAM-40 Flame Sentry",
   "A/LAS-98 Laser Sentry"
 ];
+const weapons = [
+  "AR-23 Liberator",
+  "AR-23P Liberator Penetrator",
+  "AR-23C Liberator Concussive",
+  "StA-52 Assault Rifle",
+  "AR-32 Pacifier",
+  "AR-2 Coyote",
+  "MA5C Assault Rifle",
+  "AR-23A Liberator Carbine",
+  "AR-61 Tenderizer",
+  "BR-14 Adjudicator",
+  "R-2 Amendment",
+  "R-2124 Constitution",
+  "R-6 Deadeye",
+  "R-63 Diligence",
+  "R-63CS Diligence Counter Sniper",
+  "MP-98 Knight",
+  "StA-11 SMG",
+  "M7S SMG",
+  "SMG-32 Reprimand",
+  "SMG-37 Defender",
+  "SMG-72 Pummeler",
+  "SG-8 Punisher",
+  "SG-8S Slugger",
+  "SG-20 Halt",
+  "SG-451 Cookout",
+  "M90A Shotgun",
+  "SG-225 Breaker",
+  "SG-225SP Breaker Spray&Pray",
+  "SG-225IE Breaker Incendiary",
+  "CB-9 Exploding Crossbow",
+  "R-36 Eruptor",
+  "SG-8P Punisher Plasma",
+  "PLAS-39 Accelerator Rifle",
+  "ARC-12 Blitzer",
+  "LAS-5 Scythe",
+  "LAS-16 Sickle",
+  "LAS-17 Double-Edge Sickle",
+  "PLAS-1 Scorcher",
+  "PLAS-101 Purifier",
+  "VG-70 Variable",
+  "FLAM-66 Torcher",
+  "JAR-5 Dominator"
+]
+const secondaryWeapons = [
+  "P-92 Warrant",
+  "P-2 Peacemaker",
+  "P-19 Redeemer",
+  "P-113 Verdict",
+  "M6C/SOCOM Pistol",
+  "P-4 Senator",
+  "CQC-19 Stun Lance",
+  "CQC-2 Saber",
+  "CQC-30 Stun Baton",
+  "CQC-5 Combat Hatchet",
+  "CQC-42 Machete",
+  "P-11 Stim Pistol",
+  "SG-22 Bushwhacker",
+  "LAS-58 Talon",
+  "P-72 Crisper",
+  "GP-31 Grenade Pistol",
+  "LAS-7 Dagger",
+  "GP-20 Ultimatum",
+  "PLAS-15 Loyalist"
+]
+const throwables = [
+  "TED-63 Dynamite",
+  "G-6 Frag",
+  "G-12 High Explosive",
+  "G-10 Incendiary",
+  "G-7 Pineapple",
+  "G-16 Impact",
+  "G-13 Incendiary Impact",
+  "G-23 Stun",
+  "G-4 Gas",
+  "G-50 Seeker",
+  "G-3 Smoke",
+  "G-123 Thermite",
+  "K-2 Throwing Knife",
+  "G-142 Pyrotech",
+  "G-109 Urchin",
+  "G-31 Arc"
+]
+let selectedPrimaryWeapons = [];
+let selectedSecondaryWeapons = [];
+let selectedThrowables = [];
 let selectedStratagems = [];
 let selectedBlueStratagems = 0;
 let selectedRedStratagems = 0;
 let selectedGreenStratagems = 0;
 function sendToChooseLoudoutColours() {
-  if (selectedStratagems.length > 0) {
-    localStorage.setItem("selectedStratagems", JSON.stringify(selectedStratagems));
-  }
+  // if (selectedStratagems.length > 0) {
+  //   localStorage.setItem("selectedStratagems", JSON.stringify(selectedStratagems));
+  // }
   if (selectedStratagems.length < 4) {
     alert("You need to select at least 4 stratagems!");
     return;
   }
+  if (selectedPrimaryWeapons.length < 1) {
+    alert("You need to select at least 1 primary weapon!");
+    return;
+  }
+  if (selectedSecondaryWeapons.length < 1) {
+    alert("You need to select at least 1 secondary weapon!");
+    return;
+  }
   selectedStratagems.forEach((stratagem) => {
-    if(blueStratagems.includes(stratagem)) {
+    if (blueStratagems.includes(stratagem)) {
       selectedBlueStratagems += 1;
     }
-    if(redStratagems.includes(stratagem)) {
+    if (redStratagems.includes(stratagem)) {
       selectedRedStratagems += 1;
     }
-    if(greenStratagems.includes(stratagem)) {
+    if (greenStratagems.includes(stratagem)) {
       selectedGreenStratagems += 1;
     }
   })
@@ -114,7 +208,7 @@ function findImageFilename(stratagem) {
   const replacedSpace = lowercaseStratagem.replace(/\s+/g, "-");
   const replacedSlash = replacedSpace.replace(/\//g, "-");
   const replacedQuote = replacedSlash.replace(/\"/g, "'");
-  
+
   // console.log(replacedSpace);
   return `./images/${replacedQuote}.webp`;
 }
@@ -163,8 +257,8 @@ document.addEventListener("DOMContentLoaded", () => {
     text.textContent = stratagem;
     text.style.overflow = "hidden";
     text.style.textOverflow = "ellipsis";
-    text.style.width = "calc(100% - 70px)"; 
-    
+    text.style.width = "calc(100% - 70px)";
+
 
     const line = document.createElement("div");
     line.style.clear = "both";
@@ -203,18 +297,202 @@ document.addEventListener("DOMContentLoaded", () => {
   createStratagems(blueStratagems);
   createStratagems(redStratagems);
   createStratagems(greenStratagems);
+
   if (localStorage.getItem("selectedStratagems")) {
-  selectedStratagems = JSON.parse(localStorage.getItem("selectedStratagems"));
-  selectedStratagems.forEach((stratagem) => {
-    // console.log(stratagem);
-    const stratagemDiv = document.querySelector(`[data-stratagem='${stratagem}']`);
-    // console.log(stratagemDiv);
-    if (stratagemDiv) {
+    selectedStratagems = JSON.parse(localStorage.getItem("selectedStratagems"));
+    selectedStratagems.forEach((stratagem) => {
+      // console.log(stratagem);
+      const stratagemDiv = document.querySelector(`[data-stratagem='${stratagem}']`);
       // console.log(stratagemDiv);
-      if (stratagemDiv.style.backgroundColor === "") {
-        stratagemDiv.style.backgroundColor = stratagemDiv.style.borderColor;
+      if (stratagemDiv) {
+        // console.log(stratagemDiv);
+        if (stratagemDiv.style.backgroundColor === "") {
+          stratagemDiv.style.backgroundColor = stratagemDiv.style.borderColor;
+        }
       }
+    })
+  }
+
+  function createWeaponDiv(weapon) {
+    const div = document.createElement("div");
+    div.classList.add("weapon");
+    div.style.width = "450px";
+    div.style.cursor = "pointer";
+    // div.style.marginBottom = "10px";
+    div.setAttribute("data-weapon", weapon);
+    div.onclick = () => {
+      // if (["AR-23 Liberator", "R-2124 Constitution"].includes(weapon)) {
+      //   alert("Cannot deselect AR-23 Liberator or R-2124 Constitution, you have it");
+      //   return;
+      // } else {
+      if (selectedPrimaryWeapons.includes(weapon)) {
+        selectedPrimaryWeapons = selectedPrimaryWeapons.filter((w) => w !== weapon);
+        localStorage.setItem("selectedWeapons", JSON.stringify(selectedPrimaryWeapons));
+        div.style.backgroundColor = "";
+      } else {
+        selectedPrimaryWeapons.push(weapon);
+        localStorage.setItem("selectedWeapons", JSON.stringify(selectedPrimaryWeapons));
+        div.style.backgroundColor = "rgb(34,136,167)";
+      }
+      // }
+      // console.log(selectedWeapons);
     }
-  })
-}
+    const img = document.createElement("img");
+    img.src = findImageFilename(weapon);
+    img.style.width = "100px";
+    // img.style.height = "40px";
+    img.style.float = "left";
+    img.style.marginRight = "10px";
+
+    const text = document.createElement("div");
+    text.textContent = weapon;
+    text.style.overflow = "hidden";
+    text.style.textOverflow = "ellipsis";
+    text.style.width = "calc(100% - 200px)";
+
+    const line = document.createElement("div");
+    line.style.clear = "both";
+    line.style.borderBottom = "0px solid black";
+
+    div.appendChild(img);
+    div.appendChild(text);
+    div.appendChild(line);
+
+    return div;
+  }
+  function createWeapons(weapons) {
+    weapons.forEach(weapon => {
+      const weaponDiv = createWeaponDiv(weapon);
+      document.getElementById("weapons").appendChild(weaponDiv);
+    });
+  }
+
+  createWeapons(weapons);
+  if (localStorage.getItem("selectedWeapons")) {
+    selectedPrimaryWeapons = JSON.parse(localStorage.getItem("selectedWeapons"));
+    selectedPrimaryWeapons.forEach((weapon) => {
+      const weaponDiv = document.querySelector(`[data-weapon='${weapon}']`);
+      if (weaponDiv) {
+        weaponDiv.style.backgroundColor = "rgb(34,136,167)";
+      }
+    })
+  }
+
+  function createSecondaryWeaponDiv(weapon) {
+    const div = document.createElement("div");
+    div.classList.add("weapon");
+    div.style.width = "450px";
+    div.style.cursor = "pointer";
+    // div.style.marginBottom = "10px";
+    div.setAttribute("data-weapon", weapon);
+    div.onclick = () => {
+      if (selectedSecondaryWeapons.includes(weapon)) {
+        selectedSecondaryWeapons = selectedSecondaryWeapons.filter((w) => w !== weapon);
+        localStorage.setItem("selectedSecondaryWeapons", JSON.stringify(selectedSecondaryWeapons));
+        div.style.backgroundColor = "";
+      } else {
+        selectedSecondaryWeapons.push(weapon);
+        localStorage.setItem("selectedSecondaryWeapons", JSON.stringify(selectedSecondaryWeapons));
+        div.style.backgroundColor = "rgb(34,136,167)";
+      }
+      // console.log(selectedSecondaryWeapons);
+    }
+    const img = document.createElement("img");
+    img.src = findImageFilename(weapon);
+    img.style.width = "100px";
+    // img.style.height = "40px";
+    img.style.float = "left";
+    img.style.marginRight = "10px";
+
+    const text = document.createElement("div");
+    text.textContent = weapon;
+    text.style.overflow = "hidden";
+    text.style.textOverflow = "ellipsis";
+    text.style.width = "calc(100% - 200px)";
+
+    const line = document.createElement("div");
+    line.style.clear = "both";
+    line.style.borderBottom = "0px solid black";
+
+    div.appendChild(img);
+    div.appendChild(text);
+    div.appendChild(line);
+
+    return div;
+  }
+  function createSecondaryWeapons(weapons) {
+    weapons.forEach(weapon => {
+      const weaponDiv = createSecondaryWeaponDiv(weapon);
+      document.getElementById("secondaryWeapons").appendChild(weaponDiv);
+    });
+  }
+  createSecondaryWeapons(secondaryWeapons);
+  if (localStorage.getItem("selectedSecondaryWeapons")) {
+    selectedSecondaryWeapons = JSON.parse(localStorage.getItem("selectedSecondaryWeapons"));
+    selectedSecondaryWeapons.forEach((weapon) => {
+      const weaponDiv = document.querySelector(`[data-weapon='${weapon}']`);
+      if (weaponDiv) {
+        weaponDiv.style.backgroundColor = "rgb(34,136,167)";
+      }
+    })
+  }
+
+  function createThrowableDiv(weapon) {
+    const div = document.createElement("div");
+    div.classList.add("weapon");
+    div.style.width = "450px";
+    div.style.cursor = "pointer";
+    // div.style.marginBottom = "10px";
+    div.setAttribute("data-weapon", weapon);
+    div.onclick = () => {
+      if (selectedThrowables.includes(weapon)) {
+        selectedThrowables = selectedThrowables.filter((w) => w !== weapon);
+        localStorage.setItem("selectedThrowables", JSON.stringify(selectedThrowables));
+        div.style.backgroundColor = "";
+      } else {
+        selectedThrowables.push(weapon);
+        localStorage.setItem("selectedThrowables", JSON.stringify(selectedThrowables));
+        div.style.backgroundColor = "rgb(34,136,167)";
+      }
+      // console.log(selectedThrowables);
+    }
+    const img = document.createElement("img");
+    img.src = findImageFilename(weapon);
+    img.style.width = "100px";
+    // img.style.height = "40px";
+    img.style.float = "left";
+    img.style.marginRight = "10px";
+
+    const text = document.createElement("div");
+    text.textContent = weapon;
+    text.style.overflow = "hidden";
+    text.style.textOverflow = "ellipsis";
+    text.style.width = "calc(100% - 200px)";
+
+    const line = document.createElement("div");
+    line.style.clear = "both";
+    line.style.borderBottom = "0px solid black";
+
+    div.appendChild(img);
+    div.appendChild(text);
+    div.appendChild(line);
+
+    return div;
+  }
+  function createThrowables(weapons) {
+    weapons.forEach(weapon => {
+      const weaponDiv = createThrowableDiv(weapon);
+      document.getElementById("throwables").appendChild(weaponDiv);
+    });
+  }
+  createThrowables(throwables);
+  if (localStorage.getItem("selectedThrowables")) {
+    selectedThrowables = JSON.parse(localStorage.getItem("selectedThrowables"));
+    selectedThrowables.forEach((weapon) => {
+      const weaponDiv = document.querySelector(`[data-weapon='${weapon}']`);
+      if (weaponDiv) {
+        weaponDiv.style.backgroundColor = "rgb(34,136,167)";
+      }
+    })
+  }
 });

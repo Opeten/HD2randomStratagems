@@ -8,3 +8,14 @@
     flex: 1 1 300px;
     margin: 10px;
 }
+
+.weapons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.weapons {
+    flex: 1 1 300px;
+    margin: 10px;
+}
