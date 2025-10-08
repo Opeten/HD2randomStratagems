@@ -23,7 +23,12 @@ const sg2Div = document.getElementById("sg2");
 const sg3Div = document.getElementById("sg3");
 const sg4Div = document.getElementById("sg4");
 
+const primaryDiv = document.getElementById("primary");
+const secondaryDiv = document.getElementById("secondary");
+const throwableDiv = document.getElementById("throwable");
+
 const sgDivs = [sg1Div, sg2Div, sg3Div, sg4Div];
+const weaponDivs = [primaryDiv, secondaryDiv, throwableDiv];
 
 function colourSimplify(colour) {
     if (colour === "rgb(34, 136, 167)") {
@@ -279,9 +284,55 @@ function getRandom(div, index) {
 
         greenStratagems.splice(greenStratagems.indexOf(selectedRandomSG), 1);
     }
+
 }
 
 
 sgDivs.forEach((div, index) => {
     getRandom(div, index);
+})
+const selectedPrimaryWeapons = localStorage.getItem("selectedWeapons") ? JSON.parse(localStorage.getItem("selectedWeapons")) : [];
+const selectedThrowables = localStorage.getItem("selectedThrowables") ? JSON.parse(localStorage.getItem("selectedThrowables")) : [];
+const selectedSecondaryWeapons = localStorage.getItem("selectedSecondaryWeapons") ? JSON.parse(localStorage.getItem("selectedSecondaryWeapons")) : [];
+// console.log(selectedPrimaryWeapons);
+const tempHeight = "200px";
+function getRandomWeapon(div, index) {
+    if (div.id === "primary") {
+        const selectedRandomWeapon = selectedPrimaryWeapons[Math.floor(Math.random() * selectedPrimaryWeapons.length)];
+        const img = new Image();
+        img.src = findImageFilename(selectedRandomWeapon);
+        // img.style.width = tempHeight;
+        img.style.height = tempHeight;
+        img.id = selectedRandomWeapon;
+        div.appendChild(img);
+        const text = document.createElement("p");
+        text.textContent = selectedRandomWeapon;
+        div.appendChild(text);
+    } else if (div.id === "throwable") {
+        const selectedRandomWeapon = selectedThrowables[Math.floor(Math.random() * selectedThrowables.length)];
+        const img = new Image();
+        img.src = findImageFilename(selectedRandomWeapon);
+        // img.style.width = tempHeight
+        img.style.height = tempHeight
+        img.id = selectedRandomWeapon;
+        div.appendChild(img);
+        const text = document.createElement("p");
+        text.textContent = selectedRandomWeapon;
+        div.appendChild(text);
+    } else if (div.id === "secondary") {
+        const selectedRandomWeapon = selectedSecondaryWeapons[Math.floor(Math.random() * selectedSecondaryWeapons.length)];
+        const img = new Image();
+        img.src = findImageFilename(selectedRandomWeapon);
+        // img.style.width = tempHeight
+        img.style.height = tempHeight
+        img.id = selectedRandomWeapon;
+        div.appendChild(img);
+        const text = document.createElement("p");
+        text.textContent = selectedRandomWeapon;
+        div.appendChild(text);
+    }
+}
+
+weaponDivs.forEach((div, index) => {
+    getRandomWeapon(div, index);
 })

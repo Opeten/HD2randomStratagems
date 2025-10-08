@@ -9,15 +9,19 @@
     <script src="rl.js" defer></script>
     <style>
         .big-square {
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 1000px;
-            height: 100px;
-            z-index: -9;
-            /* background-color: white; */
-            /* border: 1px solid black; */
+            flex: 1 1 300px;
+            margin: 10px;
+        }
+
+        .weapon {
+            flex: 1 1 300px;
+            margin: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
     </style>
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -51,6 +55,14 @@
         sgDivs.forEach((div, index) => {
             getRandom(div, index);
         })
+        weaponDivs.forEach(div => {
+            while (div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
+        })
+        weaponDivs.forEach((div, index) => {
+    getRandomWeapon(div, index);
+})
     ">Get Randomized Loudout</button>
 
     <input type="checkbox" id="Only1Backpack" name="Only1Backpack" value="Only1Backpack">Only 1 Backpack
@@ -59,10 +71,17 @@
 </head>
 
 <body>
-    <div class=" big-square" id="sg1" style="left: 40%;"></div>
-    <div class="big-square" id="sg2" style="left: 60%;"></div>
-    <div class="big-square" id="sg3" style="left: 80%;"></div>
-    <div class="big-square" id="sg4" style="left: 100%;"></div>
+    <div class="container" id="container">
+        <div class=" big-square" id="sg1" style="left: 40%;"></div>
+        <div class="big-square" id="sg2" style="left: 60%;"></div>
+        <div class="big-square" id="sg3" style="left: 80%;"></div>
+        <div class="big-square" id="sg4" style="left: 100%;"></div>
+    </div>
+    <div class="container" id="container">
+        <div class="weapon" id="primary" style="left: 40%;"></div>
+        <div class="weapon" id="secondary" style="left: 60%;"></div>
+        <div class="weapon" id="throwable" style="left: 80%;"></div>
+    </div>
 </body>
 
 </html>
